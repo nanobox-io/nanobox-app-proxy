@@ -9,7 +9,7 @@ code.deploy:
     - 'sed -i "s,@SECRET_TOKEN@,$SECRET_TOKEN," /app/config.json'
 data.unfs1:
   image: nanobox/unfs
-web.dns:
+web.proxy:
   network_dirs:
     data.unfs1:
       - db
