@@ -1,0 +1,18 @@
+code.build:
+  engine: none
+  before_compile:
+    - wget -O /mnt/app/portal https://s3.amazonaws.com/tools.nanopack.io/portal/linux/amd64/portal
+    - chmod 755 /mnt/app/portal
+    - cp /app/config.json /mnt/app/config.json
+code.deploy:
+  transform:
+    - 'sed -i "s,@SECRET_TOKEN@,$SECRET_TOKEN," /app/config.json'
+data.unfs1:
+  image: nanobox/unfs
+web.dns:
+  network_dirs:
+    data.unfs1:
+      - db
+  ports:
+    - tcp:8443:8443
+  start: "/app/portal -c /app/config.json"

@@ -1,0 +1,20 @@
+{
+  "api-token": "",
+  "api-host": "0.0.0.0",
+  "api-port": 8443,
+  "api-key": "",
+  "api-cert": "",
+  "api-key-password": "",
+  "db-connection": "scribble:///app/db/portal",
+  "cluster-connection": "none://",
+  "cluster-token": "",
+  "insecure": false,
+  "just-proxy": false,
+  "proxy-http": "0.0.0.0:80",
+  "proxy-tls": "0.0.0.0:443",
+  "balancer": "nginx",
+  "work-dir": "/app/db/portal",
+  "log-level": "INFO",
+  "log-file": "",
+  "server": true
+}
