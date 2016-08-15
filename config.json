@@ -1,10 +1,7 @@
 {
-  "api-token": "",
+  "api-token": "@SECRET_TOKEN@",
   "api-host": "0.0.0.0",
   "api-port": 8444,
-  "api-key": "",
-  "api-cert": "",
-  "api-key-password": "",
   "db-connection": "scribble:///app/db/portal",
   "cluster-connection": "none://",
   "cluster-token": "",
