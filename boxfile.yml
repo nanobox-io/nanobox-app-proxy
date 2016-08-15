@@ -14,5 +14,5 @@ web.proxy:
     data.unfs1:
       - db
   ports:
-    - tcp:8443:8443
+    - tcp:8444:8444
   start: "/app/portal -c /app/config.json"
