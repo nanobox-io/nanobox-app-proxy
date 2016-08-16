@@ -13,5 +13,6 @@
   "work-dir": "/app/db/portal",
   "log-level": "INFO",
   "log-file": "",
+  "proxy-ignore-upstream": true,
   "server": true
 }
