@@ -1,18 +1,21 @@
-code.build:
+run.config:
   engine: none
-  before_compile:
-    - wget -O /mnt/app/portal https://s3.amazonaws.com/tools.nanopack.io/portal/linux/amd64/portal
-    - chmod 755 /mnt/app/portal
-    - cp /app/config.json /mnt/app/config.json
-code.deploy:
+
+deploy.config:
   transform:
-    - 'sed -i "s,@SECRET_TOKEN@,$SECRET_TOKEN," /app/config.json'
-data.unfs1:
-  image: nanobox/unfs
+    - 'sed -i "s|@SECRET_TOKEN@|$SECRET_TOKEN|" /app/config.json'
+    - 'sed -i "s|localhost|$DATA_DB_HOST|" /app/config.json'
+    - 'sed -i "s|user|$DATA_DB_USER|" /app/config.json'
+    - 'sed -i "s|password|$DATA_DB_PASS|" /app/config.json'
+  extra_steps:
+    - wget -O $APP_DIR/portal https://s3.amazonaws.com/tools.nanopack.io/portal/linux/amd64/portal
+    - chmod 755 $APP_DIR/portal
+    - cp /app/config.json $APP_DIR/config.json
+
+data.db:
+  image: nanobox/postgresql:9.5
+
 web.proxy:
-  network_dirs:
-    data.unfs1:
-      - db
   ports:
     - tcp:8444:8444
   start: "/app/portal -c /app/config.json"
